@@ -1,13 +1,151 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+$tesxt-primary: #363c49;
+$primary-background: #ebf1f8;
+$button-default-bg: #d52026;
+$button-disabled-bg: #cd7d7f;
+$button-hover-bg: rgb(195, 41, 46);
+$shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $tesxt-primary;
+  font-weight: 300;
+}
+
+#root {
+  background-color: $primary-background;
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+main {
+  max-width: 400px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+nav {
+  padding: 20px;
+  font-weight: 500;
+  box-shadow: $shadow;
+  margin-bottom: 20px;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+button {
+  width: 100%;
+  border: none;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 15px 30px;
+  text-align: center;
+  box-shadow: $shadow;
+  background-color: $button-default-bg;
+  font-family: "Montserrat", sans-serif;
+
+  &:hover {
+    background-color: $button-hover-bg;
+  }
+
+  &:disabled,
+  &:hover:disabled {
+    background-color: $button-disabled-bg;
+    cursor: not-allowed;
+  }
+}
+
+form {
+  padding-bottom: 16px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-control {
+    flex-direction: column;
+    align-items: stretch;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .error-container {
+    gap: 0.75rem;
+    display: flex;
+    margin: 20px 0 10px;
+    flex-direction: column;
+
+    .error-item {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 12px;
+
+        &.check-icon {
+          fill: green;
+        }
+
+        &.xmark-icon {
+          fill: red;
+        }
+      }
+    }
+  }
+}
+
+input {
+  border: 1px solid #dcdcdc;
+  font-weight: 400;
+  margin: 10px 0 0;
+  padding: 15px;
+  flex-grow: 1;
+
+  &:active,
+  &:hover {
+    border-color:#adadad;
+    box-shadow: $shadow;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #b6b6b6;
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  nav {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1060px) {
+  main {
+    max-width: 900px;
+    margin: 40px auto 0;
+  }
+
+  form {
+    .input-control {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+
+      & > label,
+      & > div {
+        width: 50%;
+      }
+    }
+  }
 }
